@@ -1,3 +1,2 @@
-repeatnum = int(input())
-inputSentence = input()
-print(inputSentence * repeatnum)
+base, exp = map(int, input().split())
+print(base ** exp)

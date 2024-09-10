@@ -1,2 +1,2 @@
-base, exp = map(float, input().split())
-print(base ** exp)
+dividend, divisor = map(int, input().split())
+print(dividend // divisor)

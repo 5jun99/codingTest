@@ -1,4 +1,12 @@
-list1 = map(int, input().split())
-for m in list1:
-    if (m % 2 == 0):
-        print(m)
+score = int(input())
+
+if score>=90 :
+  print('A')
+else :
+  if score>=70 :
+    print('B')
+  else :
+    if score>=40 :
+      print('C')
+    else :
+      print('D') 

@@ -1,2 +1,2 @@
 inputDemical = int(input())
-print('%x' %inputDemical)
+print('%X' %inputDemical)

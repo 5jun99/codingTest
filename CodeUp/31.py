@@ -1,2 +1,2 @@
-inputDemical = int(input(), 16)
-print('%o' %inputDemical)
+c = int(input())
+print(chr(c))

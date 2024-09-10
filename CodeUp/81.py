@@ -1,5 +1,5 @@
-m, n = map(int, input().split())
+n = int(input(), 16)
 
-for i in range(1, m + 1):
-    for j in range(1, n + 1):
-        print(i, j)
+for i in range(1, 16) :
+  print('%X'%n, '*%X'%i, '=%X'%(n*i), sep='')
+  

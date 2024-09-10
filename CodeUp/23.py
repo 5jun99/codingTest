@@ -1,2 +1,2 @@
-inputYYMMDD = input().split(":")
-print(inputYYMMDD[1])
+inputSentence = input().split(":")
+print(inputSentence[1])

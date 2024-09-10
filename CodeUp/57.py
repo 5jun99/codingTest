@@ -1,2 +1,2 @@
 a, b = map(bool, map(int, input().split()))
-print((not a and b) and (not b and a))
+print(not ((a or b) and not (a and b)))

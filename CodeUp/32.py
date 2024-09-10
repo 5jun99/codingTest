@@ -1,2 +1,2 @@
-inputDemical = int(input(), 16)
-print('%o' %inputDemical)
+inputInteger = int(input())
+print(-inputInteger)

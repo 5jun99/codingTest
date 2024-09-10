@@ -1,2 +1,3 @@
-base, exp = map(float, input().split())
-print(base ** exp)
+a=input()
+a=float(a)
+print( format(a, ".2f") )

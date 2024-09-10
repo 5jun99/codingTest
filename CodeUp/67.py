@@ -1,4 +1,12 @@
-list1 = map(int, input().split())
-for m in list1:
+m = int(input())
+
+if (m < 0):
     if (m % 2 == 0):
-        print(m)
+        print("A")
+    else:
+        print("B")
+else:
+    if (m % 2 == 0):
+        print("C")
+    else:
+        print("D")

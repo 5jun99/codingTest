@@ -1,2 +1,2 @@
 a, b = map(bool, map(int, input().split()))
-print(a and b)
+print(a or b)

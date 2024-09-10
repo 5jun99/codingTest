@@ -5,4 +5,4 @@ while sum < a:
     sum += check
     check += 1
 
-print(check)
+print(check - 1)

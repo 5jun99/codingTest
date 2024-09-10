@@ -1,2 +1,2 @@
-inputSentence = input()
-print(inputSentence, inputSentence, inputSentence)
+a, b = input().split(':')
+print(a, b, sep=':')

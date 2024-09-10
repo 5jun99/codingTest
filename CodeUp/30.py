@@ -1,2 +1,3 @@
-inputDemical = int(input(), 16)
-print('%o' %inputDemical)
+n=input()
+n=ord(n)
+print(n)

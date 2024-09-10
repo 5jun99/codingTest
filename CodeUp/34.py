@@ -1,2 +1,2 @@
 inputChar = list(map(int, input().split()))
-print(inputChar)
+print(inputChar[0] - inputChar[1])

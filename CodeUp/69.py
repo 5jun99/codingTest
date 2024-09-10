@@ -1,4 +1,12 @@
-list1 = map(int, input().split())
-for m in list1:
-    if (m % 2 == 0):
-        print(m)
+a=input()
+
+if a=='A':
+    print("best!!!")
+elif a=='B':
+    print("good!!")
+elif a=='C':
+    print("run!")
+elif a=='D':
+    print("slowly~")
+else:
+    print("what?")    

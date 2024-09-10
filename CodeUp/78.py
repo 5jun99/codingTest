@@ -1,3 +1,5 @@
-a = int(input())
-list_even = [i for i in range(1, a + 1) if i % 2 == 0]
-print(list_even)
+while True:
+    a = input()
+    print(a)
+    if a == 'q':
+        break
