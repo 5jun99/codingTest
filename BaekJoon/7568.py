@@ -9,5 +9,6 @@ for i in range(n):
             people_rank[i] += 1
      
 
+print(33)
 for rank in people_rank:
     print(rank, end=' ')
