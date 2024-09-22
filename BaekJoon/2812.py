@@ -12,7 +12,7 @@ for i in range(n - k):
 
 jari = n - k - 1
 final = 0
-print(result)
+
 for i in result:
     final += 10 ** jari * i
     jari-= 1

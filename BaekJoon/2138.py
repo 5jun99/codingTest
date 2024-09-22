@@ -5,5 +5,3 @@ for i in range(n):
 after = list(input())
 for i in range(n):
     after[i] = int(after[i])
-
-print(before, after)

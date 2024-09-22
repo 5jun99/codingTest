@@ -10,4 +10,5 @@ for i in new_s:
         result += i
     else:
         result *= i
+        
 print(result)
