@@ -1,7 +1,6 @@
 board = list(input())
 
 start_X_point = 0
-end_X_point = 0
 X_sequence_count = 0
 
 board_covered = [''] * len(board)
