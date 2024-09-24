@@ -16,5 +16,6 @@ while board_index < len(board):
         board_covered.append(board[board_index])
         board_index +=1
 
+
 print(''.join(board_covered))
     
