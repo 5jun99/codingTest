@@ -9,6 +9,3 @@ for i in range(1, N):
         if num_list[i] > num_list[j]:
             dp[i] = max(dp[i], dp[j] + 1)
 print(max(dp))
-    
-
-    
