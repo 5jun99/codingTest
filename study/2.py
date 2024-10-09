@@ -10,3 +10,5 @@ while True:
         print(dp[n])
     except:
         break
+
+        
