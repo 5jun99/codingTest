@@ -1,11 +1,10 @@
 n = int(input())
 
-rank_expected = [int(input()) for _ in range(n)]
-remain_rank = n
-rank_expected.sort(reverse=True)
-dissatisfiy = 0
-for r in rank_expected:
-    dissatisfiy += abs(r - remain_rank)
-    remain_rank -= 1
+expected_rank = sorted([int(input()) for _ in range(n)])
 
-print(dissatisfiy)
+boolman = 0
+
+for i in range(n):
+    boolman += abs(expected_rank[i] - (i +1))
+
+print(boolman)
