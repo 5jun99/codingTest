@@ -53,5 +53,3 @@ for a in matrix:
         answer = max(answer, max(b))
 
 print(answer-1)
-
-# 어차피 모두 1이라면 0이 출력된다
