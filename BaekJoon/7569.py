@@ -1,55 +1,53 @@
 import sys
 from collections import deque
 
-m, n, h = map(int, input().split())
+input = sys.stdin.readline
 
-matrix = [[list(map(int, sys.stdin.readline().split())) for _ in range(n)] for _ in range(h)]
-visited = [[[False]*m for _ in range(n)] for _ in range(h)]
+m,n,h = map(int, input().split())
+
+matrix = [[list(map(int, input().split())) for _ in range(n)] for _ in range(h)]
+visited = [[[False] * m for _ in range(n)] for _ in range(h)]
 
 queue = deque()
 
-dx = [-1,1,0,0,0,0]
-dy = [0,0,-1,1,0,0]
-dz = [0,0,0,0,-1,1]
-
 answer = 0
+dx = [1, -1, 0, 0, 0, 0]
+dy = [0, 0, 1, -1, 0, 0]
+dz = [0, 0, 0, 0, 1, -1]
 
 def bfs():
     while queue:
-        x,y,z = queue.popleft()
+        x, y, z = queue.popleft()
+        
+        for d in range(6):
+            nx, ny, nz = x + dx[d], y + dy[d], z + dz[d]
 
-        for i in range(6):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            nz = z + dz[i]
-
-            if nx < 0 or nx >= h or ny < 0 or ny >= n or nz < 0 or nz >= m:
+            if nx < 0 or nx >= m or ny < 0 or ny >= n or nz < 0 or nz >= h:
                 continue
 
-            if matrix[nx][ny][nz] == 0 and visited[nx][ny][nz] == False:
+            if matrix[nz][ny][nx] == 0 and not visited[nz][ny][nx]:
                 queue.append((nx,ny,nz))
-                matrix[nx][ny][nz] = matrix[x][y][z] + 1
-                visited[nx][ny][nz] = True
+                matrix[nz][ny][nx] = 1 + matrix[z][y][x]
+                visited[nz][ny][nx] = True
 
+for i in range(h):
+    for j in range(n):
+        for k in range(m):
+            if matrix[i][j][k] == 1:
+                queue.append((k,j,i))
+                visited[i][j][k] = True
 
-# 모두 1이 아닐 경우
-
-for a in range(h):
-    for b in range(n):
-        for c in range(m):
-            if matrix[a][b][c] == 1 and visited[a][b][c] == 0:
-                queue.append((a,b,c))
-                visited[a][b][c] = True
 bfs()
 
-# 토마토 확인
+flag = True
 
-for a in matrix:
-    for b in a:
-        for c in b:
-            if c == 0:
-                print(-1)
-                exit(0)            
-        answer = max(answer, max(b))
-
-print(answer-1)
+for i in range(h):
+    for j in range(n):
+        for k in range(m):
+            if matrix[i][j][k] == 0:
+                flag = False
+        answer = max(answer, max(matrix[i][j]))
+if flag:
+    print(answer - 1)
+else:
+    print(-1)

@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 n, m, t = map(int, input().split())
 castle = [list(map(int, input().split())) for _ in range(n)]
-# visited = [[False] * m for _ in range(n)]
+visited = [[False] * m for _ in range(n)]
 queue = deque()
 princess = True
 dx = [0,0,1,-1]
@@ -23,7 +23,7 @@ def bfs():
                 global answer
                 answer = time
                 return
-            if castle[nx][ny] == 0:
+            if nx == n - 1 and ny == m - 1:
                 queue.append((nx,ny,gram, time + 1))
             elif castle[nx][ny] == 1:
                 if not gram:
