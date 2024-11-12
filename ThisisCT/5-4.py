@@ -1,3 +1,4 @@
+from collections import deque
 n, m  = map(int, input().split())
 
 graph = [list(map(int, input())) for _ in range(n)]
@@ -16,6 +17,12 @@ def dfs(x, y):
         return True
     return False
 
+def bfs(x, y):
+    queue = deque()
+    queue.append((x, y))
+    while queue:
+        x , y = queue.popleft()
+        nx , 
 result = 0
 
 for i in range(n):
