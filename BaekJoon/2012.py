@@ -1,10 +1,11 @@
 n = int(input())
 
-expected_rank = sorted([int(input()) for _ in range(n)])
+ranks = sorted([int(input()) for _ in range(n)])
 
-boolman = 0
+temp = 1
+answer = 0
+for r in ranks:
+    answer += abs(temp - r)
+    temp += 1
 
-for i in range(n):
-    boolman += abs(expected_rank[i] - (i +1))
-
-print(boolman)
+print(answer)
