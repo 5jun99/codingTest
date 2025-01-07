@@ -1,16 +1,17 @@
 n = int(input())
-list_works = sorted([list(map(int, input().split())) for _ in range(n)], key= lambda x: x[1])
-first_work = list_works.pop(0)
-fastest_time = first_work[1] - first_work[0]
-last_time = first_work[1]
-for t, s in list_works:
-    if fastest_time < 0:
-        fastest_time = -1
-        break
-    if last_time + t > s:
-        fastest_time -= last_time + t - s
-        last_time = s
-    else:
-        last_time += t
+works = sorted([list(map(int, input().split())) for _ in range(n)], key= lambda x: x[1])
+lastest = works[0][1] - works[0][0]
+now = works[0][1]
+works.pop(0)
 
-print(fastest_time)
+for work in works:
+    if lastest < 0:
+        lastest = -1
+        break
+    if now + work[0] > work[1]:
+        lastest -= now + work[0] - work[1]
+    else:
+        now += work[0]
+
+
+print(lastest)
