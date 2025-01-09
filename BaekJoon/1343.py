@@ -41,3 +41,5 @@ if game_status:
         print(char, end='')
 else:
     print(-1)
+
+    
