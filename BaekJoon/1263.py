@@ -10,6 +10,7 @@ for work in works:
         break
     if now + work[0] > work[1]:
         lastest -= now + work[0] - work[1]
+        now = work[1]
     else:
         now += work[0]
 
