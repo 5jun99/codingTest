@@ -33,3 +33,4 @@ def dfs(n, answer):
             
 dfs(n, 0)
 print(min(answers), max(answers))
+
