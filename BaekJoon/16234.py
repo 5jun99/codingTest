@@ -15,7 +15,7 @@ def check():
                 continue
             q = deque([(i, j)])
             group = [(i, j)]
-            visited[i][j] = True  # 방문 처리
+            visited[i][j] = True
             while q:
                 x, y = q.popleft()
                 for d in range(4):

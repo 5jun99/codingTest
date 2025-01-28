@@ -4,7 +4,7 @@ answers = []
 
 def check_odd(num):
     count = 0
-    for n in num:
+    for n in num:   
         if n % 2 == 1:
             count += 1
     return count

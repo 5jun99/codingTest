@@ -33,4 +33,4 @@ def validate(bracket):
     return answer
 
 
-print(validate(brackets))            
+print(validate(brackets))
