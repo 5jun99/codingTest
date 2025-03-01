@@ -1,14 +1,15 @@
 import heapq
 
 n, m, k = map(int, input().split())
-board_feed = [list(map(int, input().split())) for _ in range(n)]
+feed = [list(map(int, input().split())) for _ in range(n)]
+board_feed = [[5] * n for _ in range(n)]
 tree = []
 
 dx = [-1, -1, -1, 0, 0, 1, 1, 1]
 dy = [-1, 0, 1, -1, 1, -1, 0, 1]
 
 for _ in range(m):
-    y, x, z = map(int, input().split())
+    x, y, z = map(int, input().split())
     heapq.heappush(tree, (z, x - 1, y - 1))
 
 heapq.heapify(tree)
@@ -48,9 +49,15 @@ def fall():
     for tn in tree_new:
         heapq.heappush(tree, tn)
 
+def winter():
+    for x in range(n):
+        for y in range(n):
+            board_feed[x][y] += feed[x][y]
+
 for _ in range(k):
     tree_dead = spring()
     summer(tree_dead)
     fall()
+    winter()
 
 print(len(tree))
