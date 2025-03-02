@@ -20,3 +20,5 @@ try:
     print(result[n - 1])
 except:
     print(-1)
+
+    
