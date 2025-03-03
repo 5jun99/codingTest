@@ -61,3 +61,59 @@ for _ in range(k):
     winter()
 
 print(len(tree))
+
+
+n, m, k = map(int, input().split())
+feed = [list(map(int, input().split())) for _ in range(n)]
+board_feed = [[5] * n for _ in range(n)]
+trees = [[[] for _ in range(n)] for _ in range(n)]
+
+dx = [-1, -1, -1, 0, 0, 1, 1, 1]
+dy = [-1, 0, 1, -1, 1, -1, 0, 1]
+
+# 초기 트리 정보 입력
+for _ in range(m):
+    x, y, z = map(int, input().split())
+    trees[x - 1][y - 1].append(z)
+
+# 시뮬레이션 시작
+for _ in range(k):
+    # 봄과 여름
+    for x in range(n):
+        for y in range(n):
+            if not trees[x][y]:
+                continue
+            trees[x][y].sort()  # 나이순으로 정렬
+            alive_trees = []
+            dead_feed = 0
+            for age in trees[x][y]:
+                if board_feed[x][y] >= age:
+                    board_feed[x][y] -= age
+                    alive_trees.append(age + 1)
+                else:
+                    dead_feed += age // 2
+            trees[x][y] = alive_trees
+            board_feed[x][y] += dead_feed
+
+    # 가을
+    for x in range(n):
+        for y in range(n):
+            if not trees[x][y]:
+                continue
+            for age in trees[x][y]:
+                if age % 5 == 0:
+                    for d in range(8):
+                        nx, ny = x + dx[d], y + dy[d]
+                        if 0 <= nx < n and 0 <= ny < n:
+                            trees[nx][ny].append(1)
+
+    # 겨울
+    for x in range(n):
+        for y in range(n):
+            board_feed[x][y] += feed[x][y]
+
+# 살아남은 나무 개수 계산
+result = sum(len(trees[x][y]) for x in range(n) for y in range(n))
+print(result)
+
+
