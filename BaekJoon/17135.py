@@ -9,11 +9,11 @@ def find_shortest(enemies, c):
     for x, y in enemies:
         cost = abs(c - y) + abs(n - x)
         if cost <= d:
-            valid_targets.append((cost, y, x, (x, y)))  # (거리, 왼쪽, 위쪽, 좌표)
+            valid_targets.append((cost, y, x, (x, y))) 
 
     if valid_targets:
-        valid_targets.sort()  # 거리 -> 왼쪽 -> 위쪽 순으로 정렬
-        return valid_targets[0][3]  # 좌표 반환
+        valid_targets.sort()
+        return valid_targets[0][3]
     return None
 
 def game(origin_board, comb):
