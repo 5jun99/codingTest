@@ -1,17 +1,16 @@
 n = int(input())
 graph = [[] for _ in range(n ** 2 + 1)]
-board = [[[] for _ in range(n)] for _ in range(n)]
+board = [[-1 for _ in range(n)] for _ in range(n)]
 student = [list(map(int, input().split())) for _ in range(n ** 2)]
 student_order = []
-for s in student:
-    student_order.append(s[0])
-
+print(student)
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
-for i in student:
-    for j in i[1:]:
-        graph[i[0]].append(j)
+for s in student:
+    student_order.append(s[0])
+    for ss in s[1:]:
+        graph[s[0]].append(ss)
 
 def check_near_fav(i, j, s):
     temp = 0
@@ -29,27 +28,30 @@ def check_empty(i, j):
         nx, ny = i + dx[d], j + dy[d]
         if nx < 0 or nx >= n or ny < 0 or ny >= n:
             continue
-        if board[i][j] == []:
+        if board[nx][nx] == -1:
             temp += 1
     return temp
 
 def check_one(s):
     max_s = -1
     max_idx = []
+
     for i in range(n):
         for j in range(n):
-            if board[i][j] == []:
-                max_s = max(max_s, check_near_fav(i, j, s))
-    if max_s == -1:
-        return max_idx
-    
-    for i in range(n):
-        for j in range(n):
-            if board[i][j] == []:
-                temp = check_near_fav(i, j, s)
-                if temp == max_s:
-                    max_idx.append((i, j))
-    return max_idx
+            if board[i][j] != -1:
+                continue
+
+            score = check_near_fav(i, j, s)
+
+            if score > max_s:
+                max_s = score
+                max_idx = [(i, j)]
+            elif score == max_s:
+                max_idx.append((i, j))
+    if max_s == 0:
+        return []
+    else:
+        return max_idx  
 
 def check_two(check_one_res, s):
     max_empty_near = -1
@@ -68,7 +70,8 @@ for s in student_order:
     if len(check_one_res) == 0:
         for i in range(n):
             for j in range(n):
-                check_one_res.append((i, j))
+                if board[i][j] == -1:
+                    check_one_res.append((i, j))
     if len(check_one_res) >= 2:
         check_two_res = check_two(check_one_res, s)
         check_two_res.sort()
