@@ -33,7 +33,6 @@ parent = parents[travel[0] - 1]
 flag = True
 for i in range(1, len(travel)):
     if parent != parents[travel[i] - 1]:
-        
         flag = False
         break
 
