@@ -1,26 +1,20 @@
 n = int(input())
 
-good_numbers = sorted(list(map(int, input().split())))
+numbers = sorted(list(map(int, input().split())))
 answer = 0
 for i in range(n):
-    left = 0
-    right = n - 1
-    while left < right:
-        if left == i:
-            left += 1
-            continue
-        if right == i:
-            right -= 1
-            continue
+    good_num = numbers[i]
+    other_num = numbers[:i] + numbers[i + 1:]
 
-        temp = good_numbers[left] + good_numbers[right]
-
-        if temp < good_numbers[i]:
-            left += 1
-        elif temp == good_numbers[i]:
+    start = 0
+    end =  n - 2
+    while start < end:
+        if other_num[start] + other_num[end] == good_num:
             answer += 1
             break
+        if other_num[start] + other_num[end] > good_num:
+            end -= 1
         else:
-            right -= 1
+            start += 1
 
 print(answer)

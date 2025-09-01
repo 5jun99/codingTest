@@ -25,3 +25,35 @@ for line in feature:
         print(line[:index] + '[' + line[index] + ']' + line[index+1:])
     else:
         print(line)
+
+
+n = int(input())
+
+short_cuts = []
+for _ in range(n):
+    word = input()
+    splited_word = word.split()
+    idx = 0
+    flag = False
+    for i in range(len(splited_word)):
+        if splited_word[i][0].lower() not in short_cuts:
+            short_cuts.append(splited_word[i][0].lower())
+            flag = True
+            break
+        idx += len(splited_word[i]) + 1
+    
+    if flag:
+        print(word[:idx] + '[' + word[idx] + ']' + word[idx + 1:])
+        continue
+    idx = 0
+
+    for i in range(len(word)):
+        if word[i].lower() not in short_cuts and word[i] != ' ':
+            short_cuts.append(word[i].lower())
+            flag = True
+            break
+        idx += 1
+    if flag:
+        print(word[:idx] + '[' + word[idx] + ']' + word[idx + 1:])
+    else:
+        print(word)

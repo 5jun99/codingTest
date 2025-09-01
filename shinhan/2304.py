@@ -59,3 +59,31 @@ print(area)
 #         last = next_p
 #
 # print(area)
+
+n = int(input())
+pillar = sorted([list(map(int, input().split())) for _ in range(n)])
+
+max_idx = -1
+max_h = -1
+area = 0
+for i in range(n):
+    if max_h < pillar[i][1]:
+        max_idx = i
+        max_h = pillar[i][1]
+
+left = 0
+
+for i in range(i, max_idx + 1):
+    if pillar[i][1] > pillar[left][1]:
+        area += (pillar[i][0] - pillar[left][0]) * pillar[left][1]
+        left = i  
+
+right = n - 1
+
+for i in range(n - 2, max_idx - 1, -1):
+    if pillar[i][1] > pillar[right][1]:
+        area += (pillar[right][0] - pillar[i][0]) * pillar[right][1]
+        right = i
+
+area += max_h
+print(area)
