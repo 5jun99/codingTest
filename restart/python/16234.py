@@ -48,7 +48,7 @@ while True:
       for ux, uy in union:
         visited[ux][uy] = True
       unions.append(union)
-      
+
   for union in unions:
     adjust = 0
     for ux, uy in union:
